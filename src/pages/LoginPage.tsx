@@ -16,7 +16,11 @@ const LoginPage = () => {
     setError("");
     if (!email || !password) { setError("Preencha todos os campos."); return; }
     const ok = login(email, password);
-    if (ok) { navigate("/"); }
+    if (ok) {
+      const users = JSON.parse(localStorage.getItem("upjobs_users") || "[]");
+      const found = users.find((u: any) => u.email === email);
+      navigate(found?.assessment?.completed ? "/perfil" : "/avaliacao");
+    }
     else { setError("E-mail ou senha incorretos."); }
   };
 

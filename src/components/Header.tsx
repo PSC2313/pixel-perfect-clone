@@ -33,10 +33,13 @@ const Header = () => {
           <div className="flex-1 flex justify-end gap-3 items-center">
             {user ? (
               <>
-                <span className="hidden sm:inline text-sm text-muted-foreground font-body">
-                  <User size={14} className="inline mr-1" />
+                <Link
+                  to="/perfil"
+                  className="hidden sm:inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary font-body"
+                >
+                  <User size={14} />
                   {user.name}
-                </span>
+                </Link>
                 <button
                   onClick={logout}
                   className="hidden sm:inline-flex items-center gap-1 px-4 py-1.5 rounded-sm border border-border text-muted-foreground text-sm font-accent font-semibold hover:text-primary hover:border-primary/40 transition-colors"
