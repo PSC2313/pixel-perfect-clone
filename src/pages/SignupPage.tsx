@@ -20,7 +20,7 @@ const SignupPage = () => {
     if (password.length < 6) { setError("A senha deve ter pelo menos 6 caracteres."); return; }
     if (password !== confirm) { setError("As senhas não coincidem."); return; }
     const ok = signup(name, email, password);
-    if (ok) { navigate("/"); }
+    if (ok) { navigate("/avaliacao"); }
     else { setError("Este e-mail já está cadastrado."); }
   };
 
