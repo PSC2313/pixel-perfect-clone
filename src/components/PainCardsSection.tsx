@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, Users, TrendingDown, Clock, AlertTriangle, Bot, HelpCircle, ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import AutoScroll from "embla-carousel-auto-scroll";
 
 const pains = [
   {
@@ -85,11 +86,13 @@ const FlipCard = ({ pain }: { pain: typeof pains[0] }) => {
 };
 
 const PainCardsSection = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, dragFree: true, align: "start" },
+    [AutoScroll({ speed: 0.5, stopOnInteraction: false, stopOnMouseEnter: true })]
+  );
 
-  const scroll = (dir: number) => {
-    scrollRef.current?.scrollBy({ left: dir * 250, behavior: "smooth" });
-  };
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
     <section id="dores" className="py-20 bg-secondary/30 overflow-hidden">
@@ -107,29 +110,28 @@ const PainCardsSection = () => {
         </p>
       </div>
 
-      {/* Draggable scroll with buttons */}
       <div className="relative px-4">
         <button
-          onClick={() => scroll(-1)}
+          onClick={scrollPrev}
           className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-secondary/80 border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary/40 transition"
         >
           <ChevronLeft size={20} />
         </button>
         <button
-          onClick={() => scroll(1)}
+          onClick={scrollNext}
           className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-secondary/80 border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary/40 transition"
         >
           <ChevronRight size={20} />
         </button>
 
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing px-8"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
-        >
-          {pains.map((pain, i) => (
-            <FlipCard key={i} pain={pain} />
-          ))}
+        <div ref={emblaRef} className="overflow-hidden px-8">
+          <div className="flex gap-6">
+            {pains.map((pain, i) => (
+              <div key={i} className="flex-[0_0_auto]">
+                <FlipCard pain={pain} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
