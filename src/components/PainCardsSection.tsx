@@ -47,6 +47,48 @@ const pains = [
     subtitle: "Insegurança e dúvidas",
     back: "É natural ter medo de recomeçar. Mas permanecer parado é o maior risco que você pode correr hoje.",
   },
+    {
+    icon: Bot,
+    title: "Substituição por IA",
+    subtitle: "Robôs fazem seu trabalho",
+    back: "A automação já elimina funções inteiras. Se seu trabalho é repetitivo, a IA pode substituí-lo em meses, não anos.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Sem Certificações",
+    subtitle: "Currículo defasado",
+    back: "Empresas buscam profissionais com certificações atuais. Um currículo sem elas é invisível para recrutadores.",
+  },
+  {
+    icon: Users,
+    title: "Mercado Saturado",
+    subtitle: "Muitos profissionais, poucas vagas",
+    back: "Áreas tradicionais têm mais candidatos do que vagas. A competição é brutal e os salários estão estagnados.",
+  },
+  {
+    icon: TrendingDown,
+    title: "Carreira Obsoleta",
+    subtitle: "Sua profissão está sumindo",
+    back: "Diversas profissões estão em declínio. Se você não se adaptar agora, pode ficar sem opções amanhã.",
+  },
+  {
+    icon: Clock,
+    title: "Tempo Perdido",
+    subtitle: "Anos sem evolução",
+    back: "Cada ano na mesma posição sem crescimento é tempo que você nunca vai recuperar. O custo de oportunidade é real.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Sem Direção",
+    subtitle: "Não sabe por onde começar",
+    back: "A quantidade de informação paralisa. Sem um guia claro, você fica rodando em círculos sem sair do lugar.",
+  },
+  {
+    icon: HelpCircle,
+    title: "Medo do Novo",
+    subtitle: "Insegurança e dúvidas",
+    back: "É natural ter medo de recomeçar. Mas permanecer parado é o maior risco que você pode correr hoje.",
+  },
 ];
 
 const FlipCard = ({ pain }: { pain: typeof pains[0] }) => {
