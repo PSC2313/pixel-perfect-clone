@@ -47,7 +47,7 @@ const FAQSection = () => {
             return (
               <motion.div
                 key={i}
-                className="hologram-panel cyber-border rounded-sm p-6 text-center"
+                className="hologram-panel-FAQ cyber-border rounded-sm p-6 text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
