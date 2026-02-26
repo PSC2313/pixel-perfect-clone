@@ -74,6 +74,7 @@ const ProfilePage = () => {
                 boxShadow: discProfile ? `0 0 15px ${DISC_COLORS[discProfile]}30` : undefined,
               }}
             >
+              <input type="image" className="position-abuslute" />
               {discProfile ? (
                 <img src={DISC_IMGS[discProfile]} alt="DISC" className="w-full h-full rounded-full object-cover" />
               ) : (
